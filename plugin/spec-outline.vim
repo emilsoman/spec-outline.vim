@@ -38,7 +38,8 @@ function! s:SpecOutlineShow()
   for line in readfile(fileName)
     let index += 1
     " Match lines starting with 'it' or 'describe' followed by either of (,",'
-    if line =~ '^\s*\(it\|describe\)\s*[("''\s]\D'
+    " or a whitespace and followed by a non whitespace character
+    if line =~ '^\s*\(it\|describe\)\s*[("'' ]\D'
       let newLine = "\"" . fileName . "\" " .index . ": |" .line
       call add(specLines, newLine)
     endif
