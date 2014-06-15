@@ -34,12 +34,13 @@ function! s:SpecOutlineShow()
   " Get Current filename
   let fileName = expand('%:p')
   " Read all lines of current file and collect lines
-  " which have 'it' or 'describe'
+  " which have 'it' or 'describe' or 'context'
   for line in readfile(fileName)
     let index += 1
-    " Match lines starting with 'it' or 'describe' followed by either of (,",'
-    " or a whitespace and followed by a non whitespace character
-    if line =~ '^\s*\(it\|describe\)\s*[("'' ]\D'
+    " Match lines starting with 'it,describe or context' followed by either of
+    " (,",' or whitespace
+    " and followed by a non whitespace character
+    if line =~ '^\s*\(it\|describe\|context\)\s*[("'' ]\D'
       let newLine = "\"" . fileName . "\" " .index . ": |" .line
       call add(specLines, newLine)
     endif
@@ -74,7 +75,7 @@ function! s:SpecOutlineSyntax()
   syn match HideRubyBlock " do\s*$" conceal
   " Hide ', ->' which appears at end of jasmine blocks in coffeescript
   syn match HideCoffeeBlock ",\s*->\s*$" conceal
-  " Highlight 'it' and 'describe'
-  syn keyword ItOrDescribe it describe
-  hi def link ItOrDescribe Keyword
+  " Highlight 'it', 'describe' and 'context'
+  syn keyword SpecOutlineKeyword it describe context
+  hi def link SpecOutlineKeyword Keyword
 endfunction
