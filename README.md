@@ -12,6 +12,16 @@ To map your custom shortcut, add this to your vimrc.
 
 Replace `SHORTCUT` with your keyboard shortcut.
 
+## Configuration
+
+By default the outline shows up in a window on the right side. You can change
+this by setting this config in your ~/.vimrc :
+
+    let g:spec_outline_orientation = 'bottom'
+
+Permitted values for `g:spec_outline_orientation` are `'top'`, `'bottom'`,
+`'left'` and `'right'`.
+
 ## Installation
 
 This plugin follows the standard runtime path structure, and as such it can be installed with a variety of plugin managers:
