@@ -4,6 +4,8 @@ spec-outline.vim
 `<Leader>?` opens a spec outline in a quickfix window when inside a spec file
 (Rspec, Jasmine).
 
+![image](https://cloud.githubusercontent.com/assets/1707078/3491472/9ce4f452-0592-11e4-8be6-ade4e4ba0748.png)
+
 To map your custom shortcut, add this to your vimrc.
 
     map <silent> SHORTCUT :SpecOutlineToggle<CR>
