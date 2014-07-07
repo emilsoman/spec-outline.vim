@@ -52,7 +52,24 @@ function! s:SpecOutlineShow()
 
   " Push all spec outline lines to quickfix buffer
   cgetexpr specLines
-  copen
+
+  let orientation = get(g:, 'spec_outline_orientation', 'right')
+  let orientation_prefix = ''
+
+  if orientation == 'right'
+    let orientation_prefix = 'vertical botright '
+  elseif orientation == 'left'
+    let orientation_prefix = 'vertical topleft '
+  elseif orientation == 'top'
+    let orientation_prefix = 'topleft '
+  elseif orientation == 'bottom'
+    let orientation_prefix = 'botright '
+  endif
+
+  execute orientation_prefix . "copen"
+  " Distribute space equally
+  wincmd =
+
   call s:SpecOutlineSyntax()
   call setbufvar(originalBuffer, 'quickfix_window_open', 1)
 endfunction
