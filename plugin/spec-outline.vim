@@ -40,7 +40,7 @@ function! s:SpecOutlineShow()
     " Match lines starting with 'it,describe or context' followed by either of
     " (,",' or whitespace
     " and followed by a non whitespace character
-    if line =~ '^\s*\(it\|describe\|context\)\s*[("'' ]\D'
+    if line =~ '^\s*\(specify\|it_behaves_like\|it\|describe\|context\)\s*[("'' ]\D'
       let newLine = "\"" . fileName . "\" " .index . ": |" .line
       call add(specLines, newLine)
     endif
